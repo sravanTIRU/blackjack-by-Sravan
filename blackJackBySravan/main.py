@@ -96,6 +96,23 @@ def place_bet(p1: Player):
     return amount
 
 
+def display_initial_cards(person: Player, bot: Player):
+    """
+    Displays the initial cards drawn for both players.
+
+    Parameters:
+    - user (Player): The user player.
+    - computer (Player): The computer player.
+    """
+    print("\nInitial cards drawn:\n")
+    print("User's cards:")
+    for card in person.player_deck:
+        print(card)
+    print("\nComputer's cards:")
+    print(bot.player_deck[0])  # Displaying the first card face up
+    print("FACE DOWN")
+
+
 def show_cards_in_hand(player: Player):
     """
     Displays the cards in the player's hand.
@@ -215,6 +232,8 @@ if __name__ == '__main__':
             for _ in range(2):
                 user.player_deck.append(game_deck.pop_a_card())
                 computer.player_deck.append(game_deck.pop_a_card())
+            display_initial_cards(user, computer)
+            print("computer hides it's second card!!!")
         else:
             print('\nCurrent deck has no more cards. Start a new game.'.upper())
             break
